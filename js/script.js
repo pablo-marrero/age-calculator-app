@@ -186,7 +186,6 @@ function calculateData(data) {
   }
 
   if (data[0] < currentYear) {
-    console.log("entre 0");
     if (data[1] == currentMounth) {
       if (data[2] <= currentDay) {
         dayData = currentDay - data[2];
@@ -204,10 +203,9 @@ function calculateData(data) {
     }
 
     if (data[1] > currentMounth) {
-      console.log(typeof data[1]);
       if (data[2] <= currentDay) {
         dayData = currentDay - data[2];
-        mounthData = 12 - data[1] + currentDay;
+        mounthData = 12 - data[1] + currentMounth;
       }
       if (data[2] > currentDay) {
         dayData = mounth.dia - data[2] + currentDay;
@@ -216,7 +214,6 @@ function calculateData(data) {
       yearData = currentYear - data[0] - 1;
     }
     if (data[1] < currentMounth) {
-      console.log("entre al ultimo if");
       if (data[2] <= currentDay) {
         mounthData = currentMounth - data[1];
         dayData = currentDay - data[2];
@@ -229,14 +226,13 @@ function calculateData(data) {
     }
   }
   showData([yearData, mounthData, dayData]);
-  console.log(`año ${yearData}, mes ${mounthData} , dia ${dayData}`);
+  //console.log(`año ${yearData}, mes ${mounthData} , dia ${dayData}`);
 }
 
 function showData(data) {
   let spanDataResult = document.querySelectorAll(".sectionResult-span");
   if (data == "--") {
     spanDataResult.forEach((element) => {
-      console.dir(element);
       element.innerText = element.dataset.value;
     });
   } else {
